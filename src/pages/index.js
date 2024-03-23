@@ -1,13 +1,9 @@
 import { graphql, Link } from "gatsby"
 import * as React from "react"
 import Layout from '../components/layout'
+import { StaticImage } from "gatsby-plugin-image"
+import Seo from '../components/seo'
 
-
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
 const headingAccentStyles = {
   color: "#663399",
 }
@@ -125,16 +121,19 @@ const IndexPage = ({data}) => {
   return (
     <main>
       <Layout pageTitle="Home Page - Gatsby">
-        <h2 style={headingStyles}>
+        <h2>
           Congratulations, LeeShin!
           <br />
           <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
         </h2>
-        <Link to="/about">About</Link>
+
         <p style={paragraphStyles}>
           This page was last built on {data.site.buildTime}. 😎
         </p>
-      
+        <StaticImage
+          alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+          src="https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=small"
+        />
       <ul style={listStyles}>
         <li style={docLinkStyle}>
           <a
@@ -174,7 +173,7 @@ const IndexPage = ({data}) => {
 
 export default IndexPage
 
-export const Head = () => <title>Home Page - Gatsby</title>
+export const Head = () => <Seo title="Home Page" />
 
 export const query = graphql`
     query {
